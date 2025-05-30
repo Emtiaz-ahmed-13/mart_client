@@ -1,4 +1,4 @@
-import Logo from "@/app/assets/svgs/Logo";
+import Logo from "@/assets/svgs/Logo";
 import { FacebookIcon, Instagram, X } from "lucide-react";
 import Link from "next/link";
 
@@ -14,9 +14,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { href: "#", icon: FacebookIcon },
-    { href: "#", icon: Instagram },
-    { href: "#", icon: X },
+    { href: "https://www.facebook.com/errorprogrammer11", icon: FacebookIcon },
+    { href: "https://www.instagram.com/its_emtiazzz_11/", icon: Instagram },
+    { href: "https://x.com/emtiaza62570877", icon: X },
   ];
   return (
     <footer className="bg-white border-t border-gray-200 py-24">

@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import * as React from "react";
 
-import Logo from "@/app/assets/svgs/Logo";
+import Logo from "@/assets/svgs/Logo";
 import {
   Sidebar,
   SidebarContent,
@@ -99,7 +99,7 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar variant="inset" {...props}>
+    <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>

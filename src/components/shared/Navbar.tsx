@@ -1,5 +1,5 @@
 "use client";
-import Logo from "@/app/assets/svgs/Logo";
+import Logo from "@/assets/svgs/Logo";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
