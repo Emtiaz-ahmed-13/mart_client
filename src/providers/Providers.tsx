@@ -1,13 +1,12 @@
 "use client";
 
 import UserProvider from "@/context/UserContext";
-import { Toaster } from "sonner";
+import StoreProvider from "./StoreProvider";
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <UserProvider>
-      <Toaster position="top-center" richColors />
-      {children}
+      <StoreProvider>{children}</StoreProvider>
     </UserProvider>
   );
 };

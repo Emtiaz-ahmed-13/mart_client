@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -9,8 +8,6 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 
-import NMImageUploader from "@/components/ui/core/NMImageUploader";
-import ImagePreviewer from "@/components/ui/core/NMImageUploader/ImagePreviewer";
 import {
   Form,
   FormControl,
@@ -18,10 +15,12 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { createBrand } from "@/services/Brand";
-import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import ImagePreviewer from "@/components/ui/core/NMImageUploader/ImagePreviewer";
+import NMImageUploader from "@/components/ui/core/NMImageUploader";
+import { useState } from "react";
 import { toast } from "sonner";
+import { createBrand } from "@/services/Brand";
 
 const CreateBrandModal = () => {
   const [imageFiles, setImageFiles] = useState<File[] | []>([]);
@@ -91,7 +90,7 @@ const CreateBrandModal = () => {
                       type="text"
                       {...field}
                       value={field.value || ""}
-                      className="rounded-sm w-64"
+                      className="rounded-sm w-56"
                       placeholder="Name"
                     />
                   </FormControl>

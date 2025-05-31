@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
 import { jwtDecode } from "jwt-decode";
@@ -18,6 +17,7 @@ export const registerUser = async (userData: FieldValues) => {
 
     if (result.success) {
       (await cookies()).set("accessToken", result.data.accessToken);
+      (await cookies()).set("refreshToken", result?.data?.refreshToken);
     }
 
     return result;
@@ -38,8 +38,9 @@ export const loginUser = async (userData: FieldValues) => {
 
     const result = await res.json();
 
-    if (result.success) {
-      (await cookies()).set("accessToken", result.data.accessToken);
+    if (result?.success) {
+      (await cookies()).set("accessToken", result?.data?.accessToken);
+      (await cookies()).set("refreshToken", result?.data?.refreshToken);
     }
 
     return result;
@@ -49,14 +50,15 @@ export const loginUser = async (userData: FieldValues) => {
 };
 
 export const getCurrentUser = async () => {
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get("accessToken");
-
-  if (!accessToken) return null;
-
+  const accessToken = (await cookies()).get("accessToken")?.value;
   let decodedData = null;
-  decodedData = await jwtDecode(accessToken.value);
-  return decodedData;
+
+  if (accessToken) {
+    decodedData = await jwtDecode(accessToken);
+    return decodedData;
+  } else {
+    return null;
+  }
 };
 
 export const reCaptchaTokenVerification = async (token: string) => {
@@ -77,6 +79,26 @@ export const reCaptchaTokenVerification = async (token: string) => {
     return Error(err);
   }
 };
+
 export const logout = async () => {
   (await cookies()).delete("accessToken");
+};
+
+export const getNewToken = async () => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_API}/auth/refresh-token`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: (await cookies()).get("refreshToken")!.value,
+        },
+      }
+    );
+
+    return res.json();
+  } catch (error: any) {
+    return Error(error);
+  }
 };

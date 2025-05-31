@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import Logo from "@/assets/svgs/Logo";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -12,13 +10,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-
+import Link from "next/link";
+import Logo from "@/assets/svgs/Logo";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { registrationSchema } from "./registerValidation";
 import { registerUser } from "@/services/AuthService";
 import { toast } from "sonner";
-import { registrationSchema } from "./registerValidation";
+import { useRouter } from "next/navigation";
+import { useUser } from "@/context/UserContext";
 
 export default function RegisterForm() {
   const form = useForm({
@@ -31,12 +31,17 @@ export default function RegisterForm() {
 
   const password = form.watch("password");
   const passwordConfirm = form.watch("passwordConfirm");
+  const router = useRouter();
+
+  const { setIsLoading } = useUser();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
       const res = await registerUser(data);
+      setIsLoading(true);
       if (res?.success) {
         toast.success(res?.message);
+        router.push("/");
       } else {
         toast.error(res?.message);
       }
@@ -117,7 +122,7 @@ export default function RegisterForm() {
           />
 
           <Button
-            disabled={!!passwordConfirm && password !== passwordConfirm}
+            disabled={passwordConfirm && password !== passwordConfirm}
             type="submit"
             className="mt-5 w-full"
           >

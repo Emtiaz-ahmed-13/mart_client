@@ -1,13 +1,13 @@
-import { Button } from "@/components/ui/button";
+import React from "react";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
+  DialogFooter,
 } from "@/components/ui/dialog";
-import React from "react";
+import { Button } from "@/components/ui/button";
 
 interface DeleteModalProps {
   name: string | null;

@@ -1,18 +1,19 @@
-"use client";
 import Category from "@/components/modules/home/Category";
 import FeaturedProducts from "@/components/modules/home/FeaturedProducts";
+import FlashSale from "@/components/modules/home/FlashSale";
 import HeroSection from "@/components/modules/home/HeroSection";
-import { useUser } from "@/context/UserContext";
+import TopBrands from "@/components/modules/home/TopBrands";
 
-export default function Home() {
-  const user = useUser();
-
-  console.log(user);
+const HomePage = async () => {
   return (
     <div>
       <HeroSection />
-      <FeaturedProducts />
       <Category />
+      <FeaturedProducts />
+      <FlashSale />
+      <TopBrands />
     </div>
   );
-}
+};
+
+export default HomePage;

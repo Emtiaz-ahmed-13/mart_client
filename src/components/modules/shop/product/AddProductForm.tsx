@@ -1,9 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { Button } from "@/components/ui/button";
-import NMImageUploader from "@/components/ui/core/NMImageUploader";
-import ImagePreviewer from "@/components/ui/core/NMImageUploader/ImagePreviewer";
 import {
   Form,
   FormControl,
@@ -13,17 +10,19 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Plus } from "lucide-react";
-import { useEffect, useState } from "react";
 import {
   FieldValues,
   SubmitHandler,
   useFieldArray,
   useForm,
 } from "react-hook-form";
-
+import { Textarea } from "@/components/ui/textarea";
+import { useEffect, useState } from "react";
+import NMImageUploader from "@/components/ui/core/NMImageUploader";
+import ImagePreviewer from "@/components/ui/core/NMImageUploader/ImagePreviewer";
+import { Plus } from "lucide-react";
 import Logo from "@/assets/svgs/Logo";
+
 import {
   Select,
   SelectContent,
@@ -31,13 +30,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
+import { IBrand, ICategory } from "@/types";
 import { getAllCategories } from "@/services/Category";
-import { addProduct } from "@/services/Product";
-
 import { getAllBrands } from "@/services/Brand";
-import { IBrand } from "@/types/brand";
-import { ICategory } from "@/types/category";
+import { addProduct } from "@/services/Product";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -94,6 +90,8 @@ export default function AddProductsForm() {
   const addSpec = () => {
     appendSpec({ key: "", value: "" });
   };
+
+  // console.log(specFields);
 
   useEffect(() => {
     const fetchData = async () => {

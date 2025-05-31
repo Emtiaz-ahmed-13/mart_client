@@ -1,4 +1,4 @@
-import UpdateProductForm from "@/components/modules/shop/product/UpdateProductFormt";
+import UpdateProductForm from "@/components/modules/shop/product/UpdateProductForm";
 import { getSingleProduct } from "@/services/Product";
 
 const UpdateProductPage = async ({

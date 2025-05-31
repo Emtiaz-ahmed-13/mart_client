@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { Button } from "@/components/ui/button";
 import NMImageUploader from "@/components/ui/core/NMImageUploader";
@@ -21,7 +20,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { createCategory } from "@/services/Category";
-
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -42,7 +40,6 @@ const CreateCategoryModal = () => {
       formData.append("icon", imageFiles[0] as File);
 
       const res = await createCategory(formData);
-      console.log(res);
 
       if (res?.success) {
         toast.success(res?.message);

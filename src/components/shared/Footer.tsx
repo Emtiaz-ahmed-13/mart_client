@@ -1,5 +1,5 @@
 import Logo from "@/assets/svgs/Logo";
-import { FacebookIcon, Instagram, X } from "lucide-react";
+import { Facebook, Instagram, X } from "lucide-react";
 import Link from "next/link";
 
 const Footer = () => {
@@ -14,9 +14,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { href: "https://www.facebook.com/errorprogrammer11", icon: FacebookIcon },
-    { href: "https://www.instagram.com/its_emtiazzz_11/", icon: Instagram },
-    { href: "https://x.com/emtiaza62570877", icon: X },
+    { href: "#", icon: Facebook },
+    { href: "#", icon: Instagram },
+    { href: "#", icon: X },
   ];
   return (
     <footer className="bg-white border-t border-gray-200 py-24">
@@ -28,7 +28,7 @@ const Footer = () => {
               Next Mart
             </h1>
           </div>
-          <p className="text-gray-600 mt-3 w-1/2">
+          <p className="text-gray-600 mt-3 w-1/2 text-xs leading-6">
             Save big this Black Friday with unbeatable deals on tech, home
             essentials, fashion, and more! Limited stock.
           </p>
