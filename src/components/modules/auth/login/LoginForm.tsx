@@ -16,7 +16,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { loginSchema } from "./loginValidation";
@@ -106,13 +105,7 @@ export default function LoginForm() {
             )}
           />
 
-          <div className="flex mt-3 w-full">
-            <ReCAPTCHA
-              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_CLIENT_KEY!}
-              onChange={handleReCaptcha}
-              className="mx-auto"
-            />
-          </div>
+          <div className="flex mt-3 w-full"></div>
 
           <Button
             disabled={reCaptchaStatus ? false : true}
